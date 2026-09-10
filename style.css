@@ -184,6 +184,39 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    margin-bottom: 28px;
+}
+
+.contact {
+    list-style: none;
+    margin: 0;
+    padding: 16px 0 0;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.contact li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 5px 0;
+}
+
+.contact__key {
+    color: var(--text-muted);
+}
+
+.contact__val {
+    color: var(--accent-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+}
+
+.contact__val:hover,
+.contact__val:focus-visible {
+    border-color: var(--accent-soft);
 }
 
 .project__note {
