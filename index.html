@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="editor">
+        <div class="editor__titlebar">
+            <span class="dot dot--a"></span>
+            <span class="dot dot--b"></span>
+            <span class="dot dot--c"></span>
+            <span class="editor__filename">peteris.dev</span>
+            <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false">
+                <span class="theme-toggle__track">
+                    <span class="theme-toggle__thumb"></span>
+                </span>
+                <span class="theme-toggle__label" id="themeLabel">dark</span>
+            </button>
+        </div>
+
+        <div class="editor__pane">
+            <h1>Hello, i'm Pēteris Vancāns</h1>
+
+            <ul class="meta">
+                <li><span class="meta__key">age</span><span class="meta__val">18</span></li>
+                <li><span class="meta__key">based in</span><span class="meta__val">Latvia</span></li>
+                <li><span class="meta__key">learning to code for</span><span class="meta__val">2 years</span></li>
+                <li><span class="meta__key">projects shipped</span><span class="meta__val">1</span></li>
+            </ul>
+
+            <div class="project">
+                <p class="project__note">school project, live at —</p>
+                <a href="https://duostatly.vercel.app/" class="project__link">Duostatly</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var toggle = document.getElementById('themeToggle');
+            var label = document.getElementById('themeLabel');
+            var stored = localStorage.getItem('theme');
+            var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            var theme = stored || (prefersLight ? 'light' : 'dark');
+
+            function applyTheme(t) {
+                root.setAttribute('data-theme', t);
+                toggle.setAttribute('aria-pressed', String(t === 'light'));
+                label.textContent = t;
+            }
+
+            applyTheme(theme);
+
+            toggle.addEventListener('click', function () {
+                theme = theme === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('theme', theme);
+                applyTheme(theme);
+            });
+        })();
+    </script>
+</body>
+</html>
